@@ -1,0 +1,120 @@
+Question No : 3 / 3
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Akshaya is working on a weather monitoring system for a city. The system collects temperature data from various sensors placed throughout the city. Your task is to find the minimum temperature recorded among all the sensors for a given day. using void pointers.
+
+
+
+
+Note: This is a sample question asked in an HCL interview.
+
+Input format :
+
+The first line of input contains an integer, which represents the number of temperature readings recorded for the day.
+
+The next line of input contains the temperature readings, separated by spaces.
+
+Output format :
+
+The output displays the minimum temperature among the recorded values.
+
+Code constraints :
+
+The minimum size of the array should be at least 1.
+
+MAX_SIZE <= 100
+
+Sample test cases :
+Input 1 :
+5 
+10.5 5.7 8.9 6.2 7.1
+Output 1 :
+5.7
+Input 2 :
+4
+-3.2 0.5 -2.8 -1.9
+Output 2 :
+-3.2
+Input 3 :
+0
+Output 3 :
+Invalid size
+
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Prev
+Fill your code here
+C++ (17)
+1
+2
+// You are using GCC
+Provide Custom Input
+Clear
+Compile & Run
+Submit Code
+
+
+It looks like your code has some issues, and one of the test cases is failing. To fix the problem, you need to handle the case where the input size is zero correctly and make sure to output "Invalid size" when necessary. Here's the corrected code:
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void findMinimumTemperature(void *data, int size, double &minTemp) {
+    if (size <= 0) {
+        minTemp = 0; // Invalid size
+        return;
+    }
+    
+    double *temperatures = (double *)data;
+    minTemp = temperatures[0];
+
+    for (int i = 1; i < size; ++i) {
+        if (temperatures[i] < minTemp) {
+            minTemp = temperatures[i];
+        }
+    }
+}
+
+int main() {
+    int size;
+    cin >> size;
+
+    if (size <= 0) {
+        cout << "Invalid size" << endl;
+        return 0;
+    }
+
+    double *temperatures = new double[size];
+    
+    for (int i = 0; i < size; ++i) {
+        cin >> temperatures[i];
+    }
+
+    double minTemp;
+    findMinimumTemperature(temperatures, size, minTemp);
+
+    cout << minTemp << endl;
+
+    delete[] temperatures;
+
+    return 0;
+}
+```
+
+With this corrected code, the program will handle the "Invalid size" case correctly, and all test cases should pass.
+
+
+
+
+
+
