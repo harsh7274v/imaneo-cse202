@@ -115,6 +115,115 @@ With this corrected code, the program will handle the "Invalid size" case correc
 
 
 
+Question No : 2 / 3
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Preethi is developing an input processing module for a chatbot. Implement a program that reads user input and counts the number of words to analyze the user's query. Utilize pointer to pointer concept to process the input and count the words.
+
+
+
+
+Note: This is a sample question asked in a Wipro interview.
+
+Input format :
+
+The input consists of a list of words/sentences.
+
+Output format :
+
+The output prints the count of the words that are present in the given sentence/sentences.
+
+Code constraints :
+
+1 <= Total number of characters in the sentence(s) <= 1000
+
+Sample test cases :
+Input 1 :
+Hi, how are you? Hope this code helps you to learn. Happy Learning!! - 01245
+Output 1 :
+15
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Prev
+Next
+Fill your code here
+C++ (17)
+1
+Provide Custom Input
+Clear
+Compile & Run
+Skip
+Submit Code
+
+
+
+Here's a C++ program that reads user input, counts the number of words, and prints the count:
+
+```cpp
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int countWords(char** sentences, int numSentences) {
+    int wordCount = 0;
+    
+    for (int i = 0; i < numSentences; ++i) {
+        char* sentence = sentences[i];
+        bool inWord = false;
+        
+        while (*sentence != '\0') {
+            if (*sentence == ' ' || *sentence == '\t' || *sentence == '\n') {
+                inWord = false;
+            } else if (!inWord) {
+                wordCount++;
+                inWord = true;
+            }
+            
+            sentence++;
+        }
+    }
+    
+    return wordCount;
+}
+
+int main() {
+    char input[1000];
+    cin.getline(input, sizeof(input));
+    
+    // Split the input into sentences using '.' as delimiter
+    char* sentences[100];
+    char* token = strtok(input, ".");
+    int numSentences = 0;
+    
+    while (token != nullptr) {
+        sentences[numSentences++] = token;
+        token = strtok(nullptr, ".");
+    }
+    
+    int wordCount = countWords(sentences, numSentences);
+    cout << wordCount << endl;
+    
+    return 0;
+}
+```
+
+This code reads the user input, splits it into sentences using the '.' as a delimiter, and then counts the words in each sentence. Finally, it prints the total word count.
+
+
+
+
+
+
+
 
 
 
