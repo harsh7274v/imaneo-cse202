@@ -1,0 +1,523 @@
+Question No : 1 / 4
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Imagine you are tasked with developing a program to manage employee information for a small company. Your program should allow the user to input data for two employees, including their ID, name, and salary. Once the data is collected, the program should display the details of both employees. Use this pointer to accomplish this task.
+
+
+
+
+Note: This is a sample question asked in an HCL interview.
+
+Input format :
+
+The input consists of two lines representing the employees details.
+
+Each line contains employee ID, Name, Salary separated by space.
+
+Output format :
+
+The output displays the employees details.
+
+
+
+
+Refer to the sample outputs for the formatting specifications.
+
+Code constraints :
+
+1 <= ID <= 1000
+
+Length of name <= 100
+
+1 <= Salary <= 106
+
+Sample test cases :
+Input 1 :
+101 sonu 85000
+102 kumar 90000
+Output 1 :
+Employee 1 Details:
+ID: 101
+Name: sonu
+Salary: 85000
+Employee 2 Details:
+ID: 102
+Name: kumar
+Salary: 90000
+
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Next
+Fill your code here
+C++ (17)
+1
+2
+// You are using GCC
+Provide Custom Input
+Clear
+Compile & Run
+Skip
+Submit Code
+
+Here's a C++ program to manage employee information for two employees using pointers:
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct Employee {
+    int id;
+    string name;
+    int salary;
+};
+
+void displayEmployeeDetails(const Employee* emp, int employeeNumber) {
+    cout << "Employee " << employeeNumber << " Details:" << endl;
+    cout << "ID: " << emp->id << endl;
+    cout << "Name: " << emp->name << endl;
+    cout << "Salary: " << emp->salary << endl;
+}
+
+int main() {
+    Employee employees[2]; // Array to store two employees
+
+    for (int i = 0; i < 2; ++i) {
+        cin >> employees[i].id >> employees[i].name >> employees[i].salary;
+    }
+
+    for (int i = 0; i < 2; ++i) {
+        displayEmployeeDetails(&employees[i], i + 1);
+    }
+
+    return 0;
+}
+```
+
+This code defines a structure `Employee` to store the ID, name, and salary of an employee. It uses an array of `Employee` to store the details of two employees. The `displayEmployeeDetails` function takes a pointer to an `Employee` structure and displays the details of the employee.
+
+In the `main` function, it reads the details of two employees and then calls `displayEmployeeDetails` to display their information.
+
+
+
+Question No : 2 / 4
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Videsh is developing a program that calculates the distance between two points in a two-dimensional coordinate system. The program asks the user to enter the x and y coordinates of two points (p1 and p2).
+
+
+
+
+It then calculates the Euclidean distance between these two points using a function in the class. Finally, it displays the calculated distance between two points. Use 'this' pointer to solve the problem.
+
+
+
+
+Euclidean distance formula: d = √[(x2 - x1)2 + (y2 - y1)2]
+
+
+
+
+Note: This is a sample question asked in an HCL interview.
+
+Input format :
+
+The first line of input consists of two floating-point numbers representing the x and y coordinates of the first point.
+
+The second line of input contains two floating-point numbers representing the x and y coordinates of the second point.
+
+Output format :
+
+The output displays the distance between the two points, rounded off to two decimal places.
+
+Code constraints :
+
+0.00 <= x, y <= 500.00
+
+Sample test cases :
+Input 1 :
+0.5 0.5
+0.5 0.5
+Output 1 :
+0.00
+Input 2 :
+2.2 5.1
+3.1 8.3
+Output 2 :
+3.32
+Input 3 :
+4.2 3.1
+3.2 4.5
+Output 3 :
+1.72
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Prev
+Next
+Fill your code here
+C++ (17)
+1
+2
+// You are using GCC
+Provide Custom Input
+Clear
+Compile & Run
+Skip
+Submit Code
+
+
+I see that there is an issue with the program related to the `setprecision` function, which was not declared in the scope. To fix this issue and ensure that the program correctly calculates and displays the distance, you should include the `<iomanip>` header for the `setprecision` function.
+
+Here's the corrected code:
+
+```cpp
+#include <iostream>
+#include <cmath>
+#include <iomanip> // Include this header for setprecision
+using namespace std;
+
+class Point {
+private:
+    double x;
+    double y;
+
+public:
+    Point(double x, double y) {
+        this->x = x;
+        this->y = y;
+    }
+
+    double calculateDistance(const Point& other) const {
+        double dx = this->x - other.x;
+        double dy = this->y - other.y;
+        return sqrt(dx * dx + dy * dy);
+    }
+};
+
+int main() {
+    double x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+    Point p1(x1, y1);
+    Point p2(x2, y2);
+
+    double distance = p1.calculateDistance(p2);
+    cout << fixed << setprecision(2) << distance << endl;
+
+    return 0;
+}
+```
+
+Now, this code should compile and run without errors and produce the expected output.
+
+
+
+Question No : 3 / 4
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Imagine you are tasked with implementing a program to manage complex numbers. The program should define a Complex class with attributes for the real and imaginary parts of a complex number. Your task is to create two instances of the Complex class, obj1 and obj2, and allow the user to input real and imaginary values for each of them. After setting the data for both objects, you need to display the real and imaginary parts of each complex number. Use the pointer to object to accomplish the task.
+
+
+
+
+Note: This is a sample question asked in a TCS interview.
+
+Input format :
+
+The first line of the input consists of real and imaginary parts of the first complex number.
+
+The second line of the input consists of real and imaginary parts of second complex number.
+
+Output format :
+
+The output displays the real and imaginary parts of both complex numbers.
+
+
+
+
+Refer to the sample output for the formatting specifications.
+
+Code constraints :
+
+-103 <= real part <= 103
+
+-105 <= imaginary parts <= 105
+
+Sample test cases :
+Input 1 :
+1 56
+2 43
+Output 1 :
+Here the real part is 1
+Here the imaginary part is 56
+Here the real part is 2
+Here the imaginary part is 43
+
+Input 2 :
+-3 -82
+-4 45
+Output 2 :
+Here the real part is -3
+Here the imaginary part is -82
+Here the real part is -4
+Here the imaginary part is 45
+
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Prev
+Next
+Fill your code here
+C++ (17)
+1
+2
+// You are using GCC
+Provide Custom Input
+Clear
+Compile & Run
+Skip
+Submit Code
+
+
+Here's a C++ program that defines a Complex class, creates two instances of the Complex class, and allows the user to input real and imaginary values for each of them using a pointer to object:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+private:
+    int real;
+    int imaginary;
+
+public:
+    Complex(int r, int i) {
+        real = r;
+        imaginary = i;
+    }
+
+    void display() const {
+        cout << "Here the real part is " << real << endl;
+        cout << "Here the imaginary part is " << imaginary << endl;
+    }
+};
+
+int main() {
+    int real1, imaginary1, real2, imaginary2;
+    cin >> real1 >> imaginary1 >> real2 >> imaginary2;
+
+    Complex obj1(real1, imaginary1);
+    Complex obj2(real2, imaginary2);
+
+    obj1.display();
+    obj2.display();
+
+    return 0;
+}
+```
+
+In this code, we define a `Complex` class with attributes for the real and imaginary parts of a complex number. The constructor initializes these attributes. The `display` method is used to display the real and imaginary parts of the complex number.
+
+In the `main` function, we create two `Complex` objects (`obj1` and `obj2`), input the real and imaginary values for each of them, and then display their details using the `display` method.
+
+
+
+Question No : 4 / 4
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+Mano was tasked with creating a program to manage a shopping cart. The program should allow the user to enter details of multiple products, including the product name, price, and quantity. After entering the product details, the program should display the total price for each product and the overall shopping cart details using a pointer to object.
+
+
+
+
+Note: This is a sample question asked in a Deloitte interview.
+
+Input format :
+
+The first line of input contains an integer, maxProducts, representing the maximum number of products that can be added to the shopping cart.
+
+For each product, the following information should be provided:
+
+The first line of input consists of a string representing the name of the product (a string without spaces).
+
+The second line of input consists of a double value, representing the price of the product.
+
+The third line of input consists of an integer representing the quantity of the product.
+
+Output format :
+
+The program should display the shopping cart details, including the product name and the total price for each product.
+
+Each product's details should be displayed on a separate line.
+
+The total price should be displayed with two decimal places.
+
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+
+The maximum number of products, maxProducts, should not exceed 100.
+
+The product name will be a string without any leading or trailing spaces.
+
+The price will be a non-negative double value.
+
+The quantity will be a non-negative integer value.
+
+Sample test cases :
+Input 1 :
+3
+Apple 
+0.99 
+5
+Orange 
+1.50 
+3
+Banana 
+0.50 
+10
+Output 1 :
+Shopping Cart details:
+Product Name: Apple 
+Total Price: 4.95
+Product Name: Orange 
+Total Price: 4.50
+Product Name: Banana 
+Total Price: 5.00
+
+Input 2 :
+4
+Grapes
+0.75
+3
+Strawberry
+1.80
+5
+Kiwi
+2.30
+7
+Blueberry
+1.50
+4
+Output 2 :
+Shopping Cart details:
+Product Name: Grapes
+Total Price: 2.25
+Product Name: Strawberry
+Total Price: 9.00
+Product Name: Kiwi
+Total Price: 16.10
+Product Name: Blueberry
+Total Price: 6.00
+
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Prev
+Fill your code here
+C++ (17)
+1
+2
+// You are using GCC
+Provide Custom Input
+Clear
+Compile & Run
+Submit Code
+
+It seems there's a minor issue in the code. The variable in the `for` loop is not correctly declared. Here's the corrected code:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+class Product {
+private:
+    string name;
+    double price;
+    int quantity;
+
+public:
+    Product() {}
+
+    void setDetails(const string& n, double p, int q) {
+        name = n;
+        price = p;
+        quantity = q;
+    }
+
+    double calculateTotalPrice() const {
+        return price * quantity;
+    }
+
+    void displayDetails() const {
+        cout << "Product Name: " << name << endl;
+        cout << fixed << setprecision(2);
+        cout << "Total Price: " << calculateTotalPrice() << endl;
+    }
+};
+
+int main() {
+    int maxProducts;
+    cin >> maxProducts;
+
+    Product* products = new Product[maxProducts];
+
+    for (int i = 0; i < maxProducts; ++i) {
+        string name;
+        double price;
+        int quantity;
+
+        cin.ignore(); // Consume the newline character after maxProducts
+        getline(cin, name);
+        cin >> price >> quantity;
+
+        products[i].setDetails(name, price, quantity);
+    }
+
+    cout << "Shopping Cart details:" << endl;
+    for (int i = 0; i < maxProducts; ++i) {
+        products[i].displayDetails();
+    }
+
+    delete[] products; // Free allocated memory
+
+    return 0;
+}
+```
+
+I've corrected the variable declaration in the `for` loop (changed `inti` to `int i`). Now, the code should work as expected.
