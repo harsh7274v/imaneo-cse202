@@ -1,0 +1,128 @@
+Question No : 1 / 1
+Single File Programming Question
+
+Problem Statement
+
+
+
+
+The prime functionality of an Event Management System is budgeting. An Event Management System should estimate the total expenses incurred by an event and the percentage rate of each of the expenses involved in planning and executing the event.
+
+
+
+
+Nikhil, the founder of "Pine Tree" wanted to include this functionality in his company’s Proton Event Management System and requested your help in writing a program for the same.
+
+
+
+
+The program should get the branding expenses, travel expenses, food expenses, and logistics expenses as input from the user and calculate the total expenses for an event and the percentage rate of each of these expenses using pointer arithmetic.
+
+
+
+
+Function Name: void calculateExpenses
+
+
+
+
+Note: This is a sample question asked in an Infosys interview.
+
+Input format :
+
+The first input consists of branding expenses.
+
+The second input consists of travel expenses.
+
+The third input consists of food expenses.
+
+The fourth input consists of logistics expenses.
+
+Output format :
+
+The first line of the output displays the total expenses for the Event.
+
+The second line of output displays the percentage of the branding expenses.
+
+The third line of output displays the percentage of travel expenses.
+
+The fourth line of output displays the percentage of food expenses.
+
+The fifth line of output displays the percentage of the logistics expenses.
+
+
+
+
+Note: All outputs are rounded off to two decimal places.
+
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+
+All inputs are less than 105.
+
+Sample test cases :
+Input 1 :
+20000
+40000
+15000
+25000
+Output 1 :
+Total expenses: Rs.100000.00
+Branding expenses percentage: 20.00
+Travel expenses percentage: 40.00
+Food expenses percentage: 15.00
+Logistics expenses percentage: 25.00
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
+Marks : 10
+Negative Marks : 0
+Fill your code here
+C++ (17)
+Provide Custom Input
+Clear
+Compile & Run
+Submit Code
+
+
+Here's a C++ program that calculates the total expenses for an event and the percentage rate of each expense:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+void calculateExpenses(int branding, int travel, int food, int logistics) {
+    int totalExpenses = branding + travel + food + logistics;
+
+    double brandingPercentage = (static_cast<double>(branding) / totalExpenses) * 100;
+    double travelPercentage = (static_cast<double>(travel) / totalExpenses) * 100;
+    double foodPercentage = (static_cast<double>(food) / totalExpenses) * 100;
+    double logisticsPercentage = (static_cast<double>(logistics) / totalExpenses) * 100;
+
+    cout << fixed << setprecision(2);
+    cout << "Total expenses: Rs." << totalExpenses << ".00" << endl;
+    cout << "Branding expenses percentage: " << brandingPercentage << endl;
+    cout << "Travel expenses percentage: " << travelPercentage << endl;
+    cout << "Food expenses percentage: " << foodPercentage << endl;
+    cout << "Logistics expenses percentage: " << logisticsPercentage << endl;
+}
+
+int main() {
+    int branding, travel, food, logistics;
+    cin >> branding >> travel >> food >> logistics;
+
+    calculateExpenses(branding, travel, food, logistics);
+
+    return 0;
+}
+```
+
+This code takes the branding, travel, food, and logistics expenses as input, calculates the total expenses, and then calculates the percentage of each expense. Finally, it prints the results as specified in the problem statement.
+
+
